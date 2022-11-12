@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    kubernetes:
+      config:
+        enabled: true
+        sources:
+          - namespace: default
+            name: minikube-sample
+  main:
+    allow-bean-definition-overriding: true
+  profiles :
+    active : 
+management:
+  endpoint:
+    restart:
+      enabled: true
+server:
+  port : 8085
+
+app :
+  desc : This is a demo app 
+  name : config demo
