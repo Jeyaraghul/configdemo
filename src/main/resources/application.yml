@@ -1,22 +1,70 @@
-spring:
-  cloud:
-    kubernetes:
-      config:
-        enabled: true
-        sources:
-          - namespace: default
-            name: minikube-sample
-  main:
-    allow-bean-definition-overriding: true
-  profiles :
-    active : 
-management:
-  endpoint:
-    restart:
-      enabled: true
+# spring:
+#   cloud:
+#     kubernetes:
+#       config:
+#         enabled: true
+#         sources:
+#           - namespace: default
+#             name: minikube-sample
+#   main:
+#     allow-bean-definition-overriding: true
+#   profiles :
+#     active : 
+# management:
+#   endpoint:
+#     restart:
+#       enabled: true
 server:
   port : 8080
 
 app :
   desc : This is a demo app 
   name : config demo
+
+#   application: 
+#     name: springbootdemoapplications
+#   cloud: 
+#     kubernetes:  
+#       reload: 
+#         period: 3000
+#         enabled: true
+#         mode: event
+#         strategy: refresh
+# management: 
+#   endpoints: 
+#     web: 
+#       exposure: 
+#         include: refresh,info,health
+#   endpoint: 
+#     restart: 
+#       enabled: true
+management: 
+  endpoints: 
+    web: 
+      exposure: 
+        include: info, refresh, keepalive, health
+  endpoint: 
+    restart: 
+      enabled: true
+
+logging: 
+  level: 
+    org.springframework.cloud.kubernetes: debug
+
+spring:
+  profiles:
+    active:
+      - dev
+  # cloud: 
+  #   kubernetes: 
+  #     config: 
+  #       enabled: true
+  #       sources: 
+  #         - namespace: configdemo
+  #         - name : configwatchdemo
+  #     reload: 
+  #       enabled: true
+  #       mode: event
+  #       strategy: refresh
+  application:
+    name: configdemo
