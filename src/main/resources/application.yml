@@ -15,7 +15,7 @@ management:
     restart:
       enabled: true
 server:
-  port : 8085
+  port : 8080
 
 app :
   desc : This is a demo app 
